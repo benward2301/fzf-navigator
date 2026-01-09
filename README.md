@@ -19,11 +19,11 @@ echo 'source ~/.config/fzf-navigator.sh' >> ~/.${SHELL##*/}rc
 
 - [fzf](https://github.com/junegunn/fzf) ≥ 0.45.0
 - [eza](https://github.com/eza-community/eza) - Optional (required for icons), falls back to ls
-- [bat](https://github.com/sharkdp/bat) - Optional (required for colorized file previews), falls back to cat for file previews
+- [bat](https://github.com/sharkdp/bat) - Optional (required for colorized file previews), falls back to cat
 
 ## Usage
 
-Press `Ctrl+Space` (default) to open the navigator.
+Press `ctrl-space` (default) to open the navigator.
 
 ### Bindings
 
@@ -39,13 +39,13 @@ Press `Ctrl+Space` (default) to open the navigator.
 | `ctrl-alt-o` | `go_back` | Go back in history |
 | `ctrl-alt-i` | `go_forward` | Go forward in history |
 | `[` | `go_to_session_start` | Go to session start |
-| `;` | `go_home` | Go to home |
+| `\` | `go_home` | Go to home |
 | `/` | `go_to_root` | Go to root |
 | `ctrl-l` | `toggle_locked` | Toggle locked mode (navigation doesn't change shell CWD) |
 | `alt-h` | `toggle_hidden_files` | Toggle hidden files |
 | `ctrl-g` | `toggle_file_details` | Toggle file details (`-l`) |
 | `ctrl-r` | `toggle_recent_first` | Toggle recent-first sort |
-| `?` | `toggle_this_help` | Toggle help |
+| `?` | `toggle_help` | Toggle help |
 
 ## Configuration
 

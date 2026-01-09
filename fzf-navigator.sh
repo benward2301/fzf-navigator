@@ -369,7 +369,7 @@ __fzf_navigator_footer() {
       "toggle_locked"
       "toggle_file_details"
       "toggle_recent_first"
-      "toggle_this_help"
+      "toggle_help"
     )
 
     local bindings_list=$(bash -c 'source "$FZF_NAVIGATOR_DIR/fzf-navigator.sh"; __fzf_navigator_parse_bindings')
@@ -384,7 +384,9 @@ __fzf_navigator_footer() {
     done
     footer_content=$(IFS=$'\n'; echo "${help_lines[*]}")
   elif [[ -z "${FZF_NAVIGATOR_HIDE_HELP:-}" ]]; then
-    footer_content="? for help"
+    local bindings_list=$(bash -c 'source "$FZF_NAVIGATOR_DIR/fzf-navigator.sh"; __fzf_navigator_parse_bindings')
+    local help_key=$(echo "$bindings_list" | grep "^toggle_help:" | cut -d: -f2 | head -n1)
+    footer_content="$help_key for help"
   fi
 
   echo -e "$footer_content"
@@ -744,9 +746,9 @@ toggle_locked:ctrl-l
 toggle_hidden_files:alt-h
 toggle_file_details:ctrl-g
 toggle_recent_first:ctrl-r
-toggle_this_help:?"
+toggle_help:?"
 
-  local valid_actions="open open_and_exit exit insert_selection copy_selection cancel go_to_parent go_back go_forward go_to_session_start go_home go_to_root toggle_locked toggle_hidden_files toggle_file_details toggle_recent_first toggle_this_help"
+  local valid_actions="open open_and_exit exit insert_selection copy_selection cancel go_to_parent go_back go_forward go_to_session_start go_home go_to_root toggle_locked toggle_hidden_files toggle_file_details toggle_recent_first toggle_help"
 
   if [[ -n "${FZF_NAVIGATOR_BINDINGS:-}" ]]; then
     # Collect actions that have user-specified bindings
@@ -985,7 +987,7 @@ __fzf_navigator() {
       exit)
         bind_str="${key}:become(echo //exit)"
         ;;
-      toggle_this_help)
+      toggle_help)
         help_key="${key}"
         ;;
     esac
