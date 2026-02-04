@@ -1132,7 +1132,7 @@ __fzf_navigator() {
       if [[ "$PWD" != "$__FZF_NAV_ORIGINAL_PWD" ]]; then
         if $paths_inserted; then
           __FZF_NAV_RESTORE_CURSOR=$CURSOR
-          print -z "$BUFFER"
+          print -rz -- "$BUFFER"
         fi
         BUFFER=""
         zle accept-line
