@@ -1023,6 +1023,7 @@ __fzf_navigator() {
     --footer-border none \
     --color 'query::bold' \
     --preview "$preview_cmd" \
+    --preview-window '60%,<80(down,50%)' \
     "${fzf_custom_opts[@]}" \
     --ansi \
     --no-clear \
