@@ -192,6 +192,7 @@ __fzf_navigator_reload() {
     fi
     [[ -f "$tmpdir/show_details" ]] && cmd="$cmd -l" || cmd="$cmd -1"
     [[ -f "$tmpdir/show_hidden" ]] && cmd="$cmd -a"
+    [[ ! -f "$tmpdir/show_ignored" ]] && cmd="$cmd --git-ignore"
   else
     if [[ -f "$tmpdir/recent_first" ]]; then
       cmd="$cmd -t"
@@ -366,6 +367,7 @@ __fzf_navigator_footer() {
       "go_home"
       "go_to_root"
       "toggle_hidden_files"
+      "toggle_ignored_files"
       "toggle_locked"
       "toggle_file_details"
       "toggle_recent_first"
@@ -398,8 +400,22 @@ __fzf_navigator_info() {
   local initial_dir=$(cat "$tmpdir/lock_initial_dir")
   local indicators=""
   [[ -f "$tmpdir/show_hidden" ]] && indicators+="H"
+  [[ -f "$tmpdir/show_ignored" ]] && indicators+="I"
   [[ -f "$tmpdir/locked" ]] && indicators+="L"
   [[ -f "$tmpdir/recent_first" ]] && indicators+="R"
+
+  local not_shown_text=""
+  if [[ ! -f "$tmpdir/show_hidden" ]] || [[ ! -f "$tmpdir/show_ignored" ]]; then
+    local ls_cmd=$(__fzf_navigator_detect_ls_command)
+    local total_count
+    if [[ "$ls_cmd" == "eza" ]]; then
+      total_count=$(eza -1 -a "$current_dir" 2>/dev/null | wc -l)
+    else
+      total_count=$(ls -1A "$current_dir" 2>/dev/null | wc -l)
+    fi
+    local not_shown=$((total_count - FZF_TOTAL_COUNT))
+    [[ $not_shown -gt 0 ]] && not_shown_text="-$not_shown"
+  fi
 
   local initial_ref=""
   if [[ "$current_dir" != "$initial_dir" ]]; then
@@ -425,16 +441,13 @@ __fzf_navigator_info() {
     fi
   fi
 
-  local suffix=""
-  if [[ -n "$indicators" && -n "$initial_ref" ]]; then
-    suffix="$indicators $initial_ref"
-  elif [[ -n "$indicators" ]]; then
-    suffix="$indicators"
-  elif [[ -n "$initial_ref" ]]; then
-    suffix="$initial_ref"
-  fi
+  local parts=()
+  [[ -n "$not_shown_text" ]] && parts+=("$not_shown_text")
+  [[ -n "$indicators" ]] && parts+=("$indicators")
+  [[ -n "$initial_ref" ]] && parts+=("$initial_ref")
 
-  if [[ -n "$suffix" ]]; then
+  if [[ ${#parts[@]} -gt 0 ]]; then
+    local suffix="${parts[*]}"
     echo "$FZF_INFO $suffix"
   else
     echo "$FZF_INFO"
@@ -629,6 +642,19 @@ __fzf_navigator_transform_toggle_hidden() {
   echo "reload-sync(bash -c 'source \"\$FZF_NAVIGATOR_DIR/fzf-navigator.sh\"; __fzf_navigator_reload')"
 }
 
+__fzf_navigator_transform_toggle_ignored() {
+  local tmpdir="$FZF_NAVIGATOR_TMPDIR"
+  local flag_file="$tmpdir/show_ignored"
+
+  if [[ -f "$flag_file" ]]; then
+    rm "$flag_file"
+  else
+    touch "$flag_file"
+  fi
+
+  echo "reload-sync(bash -c 'source \"\$FZF_NAVIGATOR_DIR/fzf-navigator.sh\"; __fzf_navigator_reload')"
+}
+
 __fzf_navigator_transform_toggle_details() {
   local tmpdir="$FZF_NAVIGATOR_TMPDIR"
   local flag_file="$tmpdir/show_details"
@@ -744,11 +770,12 @@ go_home:\\
 go_to_root:/
 toggle_locked:ctrl-l
 toggle_hidden_files:alt-h
+toggle_ignored_files:alt-i
 toggle_file_details:ctrl-g
 toggle_recent_first:ctrl-r
 toggle_help:?"
 
-  local valid_actions="open open_and_exit exit insert_selection copy_selection cancel go_to_parent go_back go_forward go_to_session_start go_home go_to_root toggle_locked toggle_hidden_files toggle_file_details toggle_recent_first toggle_help"
+  local valid_actions="open open_and_exit exit insert_selection copy_selection cancel go_to_parent go_back go_forward go_to_session_start go_home go_to_root toggle_locked toggle_hidden_files toggle_ignored_files toggle_file_details toggle_recent_first toggle_help"
 
   if [[ -n "${FZF_NAVIGATOR_BINDINGS:-}" ]]; then
     # Collect actions that have user-specified bindings
@@ -882,6 +909,7 @@ __fzf_navigator() {
 
   if [[ -n "${__FZF_NAV_RESET_CURRENT_DIR:-}" ]]; then
     [[ -n "$__FZF_NAV_RESET_SHOW_HIDDEN" ]] && touch "$tmpdir/show_hidden"
+    [[ -n "$__FZF_NAV_RESET_SHOW_IGNORED" ]] && touch "$tmpdir/show_ignored"
     [[ -n "$__FZF_NAV_RESET_SHOW_DETAILS" ]] && touch "$tmpdir/show_details"
     [[ -n "$__FZF_NAV_RESET_RECENT_FIRST" ]] && touch "$tmpdir/recent_first"
     [[ -n "$__FZF_NAV_RESET_SHOW_HELP" ]] && touch "$tmpdir/show_help"
@@ -892,6 +920,7 @@ __fzf_navigator() {
     echo "$PWD" > "$tmpdir/lock_initial_dir"
     echo "$__FZF_NAV_RESET_SESSION_START_DIR" > "$tmpdir/session_start_dir"
     unset __FZF_NAV_RESET_SHOW_HIDDEN
+    unset __FZF_NAV_RESET_SHOW_IGNORED
     unset __FZF_NAV_RESET_SHOW_DETAILS
     unset __FZF_NAV_RESET_RECENT_FIRST
     unset __FZF_NAV_RESET_SHOW_HELP
@@ -907,6 +936,8 @@ __fzf_navigator() {
       echo "$PWD" > "$tmpdir/lock_current_dir"
       rm -f "$tmpdir/show_hidden"
       [[ -n "${FZF_NAVIGATOR_SHOW_HIDDEN:-}" ]] && touch "$tmpdir/show_hidden"
+      rm -f "$tmpdir/show_ignored"
+      [[ -n "${FZF_NAVIGATOR_SHOW_IGNORED:-}" ]] && touch "$tmpdir/show_ignored"
       [[ -n "${FZF_NAVIGATOR_LOCK_CWD:-}" ]] && touch "$tmpdir/locked"
     else
       local history_index=$(cat "$tmpdir/history_index")
@@ -924,6 +955,8 @@ __fzf_navigator() {
     [[ -n "${FZF_NAVIGATOR_LOCK_CWD:-}" ]] && touch "$tmpdir/locked"
     rm -f "$tmpdir/show_hidden"
     [[ -n "${FZF_NAVIGATOR_SHOW_HIDDEN:-}" ]] && touch "$tmpdir/show_hidden"
+    rm -f "$tmpdir/show_ignored"
+    [[ -n "${FZF_NAVIGATOR_SHOW_IGNORED:-}" ]] && touch "$tmpdir/show_ignored"
     rm -f "$tmpdir/show_help"
     rm -f "$tmpdir/show_details"
     rm -f "$tmpdir/recent_first"
@@ -968,6 +1001,9 @@ __fzf_navigator() {
         ;;
       toggle_hidden_files)
         bind_str="${key}:transform(bash -c 'source \"\$FZF_NAVIGATOR_DIR/fzf-navigator.sh\"; __fzf_navigator_transform_toggle_hidden')"
+        ;;
+      toggle_ignored_files)
+        bind_str="${key}:transform(bash -c 'source \"\$FZF_NAVIGATOR_DIR/fzf-navigator.sh\"; __fzf_navigator_transform_toggle_ignored')"
         ;;
       toggle_file_details)
         bind_str="${key}:transform(bash -c 'source \"\$FZF_NAVIGATOR_DIR/fzf-navigator.sh\"; __fzf_navigator_transform_toggle_details')"
@@ -1042,6 +1078,8 @@ __fzf_navigator() {
     dir=$(cat "$tmpdir/lock_current_dir")
     export __FZF_NAV_RESET_SHOW_HIDDEN=""
     [[ -f "$tmpdir/show_hidden" ]] && export __FZF_NAV_RESET_SHOW_HIDDEN="1"
+    export __FZF_NAV_RESET_SHOW_IGNORED=""
+    [[ -f "$tmpdir/show_ignored" ]] && export __FZF_NAV_RESET_SHOW_IGNORED="1"
     export __FZF_NAV_RESET_SHOW_DETAILS=""
     [[ -f "$tmpdir/show_details" ]] && export __FZF_NAV_RESET_SHOW_DETAILS="1"
     export __FZF_NAV_RESET_RECENT_FIRST=""

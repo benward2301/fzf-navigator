@@ -43,6 +43,7 @@ Press `ctrl-space` (default) to open the navigator.
 | `/` | `go_to_root` | Go to root |
 | `ctrl-l` | `toggle_locked` | Toggle locked mode (navigation doesn't change shell CWD) |
 | `alt-h` | `toggle_hidden_files` | Toggle hidden files |
+| `alt-i` | `toggle_ignored_files` | Toggle git-ignored files (eza only) |
 | `ctrl-g` | `toggle_file_details` | Toggle file details (`-l`) |
 | `ctrl-r` | `toggle_recent_first` | Toggle recent-first sort |
 | `?` | `toggle_help` | Toggle help |
@@ -53,6 +54,7 @@ Press `ctrl-space` (default) to open the navigator.
 |----------|-------------|
 | `FZF_NAVIGATOR_KEY` | Keybinding to launch navigator (default: `ctrl-space`) |
 | `FZF_NAVIGATOR_SHOW_HIDDEN` | Show hidden files by default if set |
+| `FZF_NAVIGATOR_SHOW_IGNORED` | Show git-ignored files by default if set (eza only) |
 | `FZF_NAVIGATOR_LOCK_CWD` | Start in locked mode if set (navigation doesn't change shell CWD) |
 | `FZF_NAVIGATOR_HIDE_HELP` | Hide the "? for help" hint if set |
 | `FZF_NAVIGATOR_LS_FORMAT` | Comma-separated: `icons`, `color`, `classify`, or `plain` (default: `icons,color`) |
