@@ -870,15 +870,15 @@ __fzf_navigator_final_restore() {
         fi
       fi
       bind '"\305":"\C-m'"$escaped$cursor_move"'"'
-      READLINE_LINE=""
-      READLINE_POINT=0
+      READLINE_LINE="builtin cd -- $(printf '%q' "$__FZF_NAV_TARGET_DIR")"
+      READLINE_POINT=${#READLINE_LINE}
     else
       bind '"\305":""'
     fi
   elif [[ "${__FZF_NAV_PWD_CHANGED:-0}" -eq 1 ]]; then
     bind '"\305":"\C-m"'
-    READLINE_LINE=""
-    READLINE_POINT=0
+    READLINE_LINE="builtin cd -- $(printf '%q' "$__FZF_NAV_TARGET_DIR")"
+    READLINE_POINT=${#READLINE_LINE}
   else
     bind '"\305":""'
     READLINE_LINE="$READLINE_LINE_SAVED"
@@ -886,6 +886,7 @@ __fzf_navigator_final_restore() {
   fi
   __FZF_NAV_PWD_CHANGED=0
   __FZF_NAV_PATHS_INSERTED=0
+  unset __FZF_NAV_TARGET_DIR
 }
 
 __fzf_navigator() {
@@ -1169,11 +1170,13 @@ __fzf_navigator() {
     if $is_zsh; then
       zle autosuggest-clear 2>/dev/null
       if [[ "$PWD" != "$__FZF_NAV_ORIGINAL_PWD" ]]; then
+        local target_dir="$PWD"
+        builtin cd -q "$__FZF_NAV_ORIGINAL_PWD"
         if $paths_inserted; then
           __FZF_NAV_RESTORE_CURSOR=$CURSOR
           print -rz -- "$BUFFER"
         fi
-        BUFFER=""
+        BUFFER="builtin cd -- ${(q)target_dir:a}"
         zle accept-line
       else
         zle reset-prompt
@@ -1181,6 +1184,8 @@ __fzf_navigator() {
     else
       if [[ "$PWD" != "$__FZF_NAV_ORIGINAL_PWD" ]]; then
         __FZF_NAV_PWD_CHANGED=1
+        __FZF_NAV_TARGET_DIR="$PWD"
+        cd "$__FZF_NAV_ORIGINAL_PWD"
       else
         __FZF_NAV_PWD_CHANGED=0
       fi
