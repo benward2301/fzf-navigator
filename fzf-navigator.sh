@@ -192,7 +192,9 @@ __fzf_navigator_reload() {
     fi
     [[ -f "$tmpdir/show_details" ]] && cmd="$cmd -l" || cmd="$cmd -1"
     [[ -f "$tmpdir/show_hidden" ]] && cmd="$cmd -a"
-    [[ ! -f "$tmpdir/show_ignored" ]] && cmd="$cmd --git-ignore"
+    if [[ ! -f "$tmpdir/show_ignored" ]] && ! git -C "$current_dir" check-ignore -q "$current_dir" 2>/dev/null; then
+      cmd="$cmd --git-ignore"
+    fi
   else
     if [[ -f "$tmpdir/recent_first" ]]; then
       cmd="$cmd -t"
