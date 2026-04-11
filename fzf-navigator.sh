@@ -1047,11 +1047,12 @@ __fzf_navigator() {
 
   local initial_footer=$(bash -c 'source "$FZF_NAVIGATOR_DIR/fzf-navigator.sh"; __fzf_navigator_footer')
   local fzf_custom_opts=()
-  if [[ -n "$FZF_NAVIGATOR_OPTIONS" ]]; then
+  local fzf_navigator_opts="${FZF_NAVIGATOR_OPTS:-${FZF_NAVIGATOR_OPTIONS:-}}"
+  if [[ -n "$fzf_navigator_opts" ]]; then
     if $is_zsh; then
-      read -A fzf_custom_opts <<< "$FZF_NAVIGATOR_OPTIONS"
+      read -A fzf_custom_opts <<< "$fzf_navigator_opts"
     else
-      read -ra fzf_custom_opts <<< "$FZF_NAVIGATOR_OPTIONS"
+      read -ra fzf_custom_opts <<< "$fzf_navigator_opts"
     fi
   fi
 

@@ -59,7 +59,7 @@ Press `ctrl-space` to open the navigator.
 | `FZF_NAVIGATOR_HIDE_HELP` | Hide the "? for help" hint if set |
 | `FZF_NAVIGATOR_LS_FORMAT` | Comma-separated: `icons`, `color`, `classify`, or `plain` (default: `icons,color`) |
 | `FZF_NAVIGATOR_BINDINGS` | Custom keybindings: `"key:action,key:action,..."` |
-| `FZF_NAVIGATOR_OPTIONS` | Additional `fzf` options |
+| `FZF_NAVIGATOR_OPTS` | Additional `fzf` options |
 | `FZF_NAVIGATOR_FILE_PREVIEW_COMMAND` | Custom file preview command (receives path as `$1`) |
 | `FZF_NAVIGATOR_DIR_PREVIEW_COMMAND` | Custom directory preview command (receives path as `$1`) |
 
