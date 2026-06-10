@@ -63,6 +63,16 @@ Press `ctrl-space` to open the navigator.
 | `FZF_NAVIGATOR_FILE_PREVIEW_COMMAND` | Custom file preview command (receives path as `$1`) |
 | `FZF_NAVIGATOR_DIR_PREVIEW_COMMAND` | Custom directory preview command (receives path as `$1`) |
 
+## Truecolor icons
+
+When using `eza`, you can enable truecolor file icons (if your terminal supports it) by copying [theme.yml](theme.yml) to your eza config directory:
+
+```bash
+curl -o "${EZA_CONFIG_DIR:-$HOME/.config/eza}/theme.yml" https://raw.githubusercontent.com/benward2301/fzf-navigator/main/theme.yml
+```
+
+![](fzf-navigator-truecolor.png)
+
 ## Compatibility
 
 - **Shells**: `zsh`, `bash` ≥ 5.0
