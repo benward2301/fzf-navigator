@@ -4,7 +4,6 @@ extensions:
   "7z": { icon: { style: { foreground: "#ECA517" } } }
   "dockerfile": { icon: { style: { foreground: "#458EE6" } } }
   "r": { icon: { style: { foreground: "#2266BA" } } }
-  "a": { icon: { style: { foreground: "#DCDDD6" } } }
   "aac": { icon: { style: { foreground: "#00AFFF" } } }
   "ada": { icon: { style: { foreground: "#599EFF" } } }
   "adb": { icon: { style: { foreground: "#599EFF" } } }
@@ -57,7 +56,6 @@ extensions:
   "cljc": { icon: { style: { foreground: "#8DC149" } } }
   "cljd": { icon: { style: { foreground: "#519ABA" } } }
   "cljs": { icon: { style: { foreground: "#519ABA" } } }
-  "cmake": { icon: { style: { foreground: "#DCE3EB" } } }
   "cob": { icon: { style: { foreground: "#005CA5" } } }
   "cobol": { icon: { style: { foreground: "#005CA5" } } }
   "coffee": { icon: { style: { foreground: "#CBCB41" } } }
@@ -68,7 +66,6 @@ extensions:
   "cpp": { icon: { style: { foreground: "#519ABA" } } }
   "cppm": { icon: { style: { foreground: "#519ABA" } } }
   "cpy": { icon: { style: { foreground: "#005CA5" } } }
-  "cr": { icon: { style: { foreground: "#C8C8C8" } } }
   "crdownload": { icon: { style: { foreground: "#44CDA8" } } }
   "cs": { icon: { style: { foreground: "#596706" } } }
   "csh": { icon: { style: { foreground: "#4D5A5E" } } }
@@ -85,7 +82,6 @@ extensions:
   "cxxm": { icon: { style: { foreground: "#519ABA" } } }
   "d": { icon: { style: { foreground: "#B03931" } } }
   "dart": { icon: { style: { foreground: "#03589C" } } }
-  "db": { icon: { style: { foreground: "#DAD8D8" } } }
   "desktop": { icon: { style: { foreground: "#563D7C" } } }
   "diff": { icon: { style: { foreground: "#41535B" } } }
   "dll": { icon: { style: { foreground: "#4D2C0B" } } }
@@ -96,7 +92,6 @@ extensions:
   "download": { icon: { style: { foreground: "#44CDA8" } } }
   "drl": { icon: { style: { foreground: "#FFAFAF" } } }
   "dropbox": { icon: { style: { foreground: "#0061FE" } } }
-  "dump": { icon: { style: { foreground: "#DAD8D8" } } }
   "dwg": { icon: { style: { foreground: "#839463" } } }
   "dxf": { icon: { style: { foreground: "#839463" } } }
   "ebook": { icon: { style: { foreground: "#EAB16D" } } }
@@ -110,7 +105,6 @@ extensions:
   "elm": { icon: { style: { foreground: "#519ABA" } } }
   "eln": { icon: { style: { foreground: "#8172BE" } } }
   "env": { icon: { style: { foreground: "#FAF743" } } }
-  "eot": { icon: { style: { foreground: "#ECECEC" } } }
   "epp": { icon: { style: { foreground: "#FFA61A" } } }
   "epub": { icon: { style: { foreground: "#EAB16D" } } }
   "erb": { icon: { style: { foreground: "#701516" } } }
@@ -135,8 +129,6 @@ extensions:
   "feature": { icon: { style: { foreground: "#00A818" } } }
   "fish": { icon: { style: { foreground: "#4D5A5E" } } }
   "flac": { icon: { style: { foreground: "#0075AA" } } }
-  "flc": { icon: { style: { foreground: "#ECECEC" } } }
-  "flf": { icon: { style: { foreground: "#ECECEC" } } }
   "fnl": { icon: { style: { foreground: "#FFF3D7" } } }
   "fodg": { icon: { style: { foreground: "#FFFB57" } } }
   "fodp": { icon: { style: { foreground: "#FE9C45" } } }
@@ -166,7 +158,6 @@ extensions:
   "gv": { icon: { style: { foreground: "#30638E" } } }
   "gz": { icon: { style: { foreground: "#ECA517" } } }
   "h": { icon: { style: { foreground: "#A074C4" } } }
-  "haml": { icon: { style: { foreground: "#EAEAE1" } } }
   "hbs": { icon: { style: { foreground: "#F0772B" } } }
   "heex": { icon: { style: { foreground: "#A074C4" } } }
   "hex": { icon: { style: { foreground: "#2E63FF" } } }
@@ -190,14 +181,10 @@ extensions:
   "ige": { icon: { style: { foreground: "#839463" } } }
   "iges": { icon: { style: { foreground: "#839463" } } }
   "igs": { icon: { style: { foreground: "#839463" } } }
-  "image": { icon: { style: { foreground: "#D0BEC8" } } }
-  "img": { icon: { style: { foreground: "#D0BEC8" } } }
-  "import": { icon: { style: { foreground: "#ECECEC" } } }
   "info": { icon: { style: { foreground: "#FFFFCD" } } }
   "ini": { icon: { style: { foreground: "#6D8086" } } }
   "ino": { icon: { style: { foreground: "#56B6C2" } } }
   "ipynb": { icon: { style: { foreground: "#F57D01" } } }
-  "iso": { icon: { style: { foreground: "#D0BEC8" } } }
   "ixx": { icon: { style: { foreground: "#519ABA" } } }
   "jar": { icon: { style: { foreground: "#ffaf67" } } }
   "java": { icon: { style: { foreground: "#CC3E44" } } }
@@ -217,23 +204,18 @@ extensions:
   "kdbx": { icon: { style: { foreground: "#529B34" } } }
   "kdenlive": { icon: { style: { foreground: "#83B8F2" } } }
   "kdenlivetitle": { icon: { style: { foreground: "#83B8F2" } } }
-  "ko": { icon: { style: { foreground: "#DCDDD6" } } }
   "kpp": { icon: { style: { foreground: "#F245FB" } } }
   "kra": { icon: { style: { foreground: "#F245FB" } } }
   "krz": { icon: { style: { foreground: "#F245FB" } } }
   "ksh": { icon: { style: { foreground: "#4D5A5E" } } }
   "kt": { icon: { style: { foreground: "#7F52FF" } } }
   "kts": { icon: { style: { foreground: "#7F52FF" } } }
-  "lck": { icon: { style: { foreground: "#BBBBBB" } } }
   "leex": { icon: { style: { foreground: "#A074C4" } } }
   "less": { icon: { style: { foreground: "#563D7C" } } }
-  "lff": { icon: { style: { foreground: "#ECECEC" } } }
   "lhs": { icon: { style: { foreground: "#A074C4" } } }
   "lib": { icon: { style: { foreground: "#4D2C0B" } } }
   "license": { icon: { style: { foreground: "#CBCB41" } } }
   "liquid": { icon: { style: { foreground: "#95BF47" } } }
-  "lock": { icon: { style: { foreground: "#BBBBBB" } } }
-  "log": { icon: { style: { foreground: "#DDDDDD" } } }
   "lrc": { icon: { style: { foreground: "#FFB713" } } }
   "lua": { icon: { style: { foreground: "#51A0CF" } } }
   "luac": { icon: { style: { foreground: "#51A0CF" } } }
@@ -245,9 +227,7 @@ extensions:
   "m4v": { icon: { style: { foreground: "#FD971F" } } }
   "magnet": { icon: { style: { foreground: "#A51B16" } } }
   "makefile": { icon: { style: { foreground: "#6D8086" } } }
-  "markdown": { icon: { style: { foreground: "#DDDDDD" } } }
   "material": { icon: { style: { foreground: "#B83998" } } }
-  "md": { icon: { style: { foreground: "#DDDDDD" } } }
   "md5": { icon: { style: { foreground: "#8C86AF" } } }
   "mdx": { icon: { style: { foreground: "#519ABA" } } }
   "mint": { icon: { style: { foreground: "#87C095" } } }
@@ -287,7 +267,6 @@ extensions:
   "ogx": { icon: { style: { foreground: "#FD971F" } } }
   "opus": { icon: { style: { foreground: "#0075AA" } } }
   "org": { icon: { style: { foreground: "#77AA99" } } }
-  "otf": { icon: { style: { foreground: "#ECECEC" } } }
   "out": { icon: { style: { foreground: "#9F0500" } } }
   "part": { icon: { style: { foreground: "#44CDA8" } } }
   "patch": { icon: { style: { foreground: "#41535B" } } }
@@ -347,7 +326,6 @@ extensions:
   "sc": { icon: { style: { foreground: "#CC3E44" } } }
   "scad": { icon: { style: { foreground: "#F9D72C" } } }
   "scala": { icon: { style: { foreground: "#CC3E44" } } }
-  "scm": { icon: { style: { foreground: "#EEEEEE" } } }
   "scss": { icon: { style: { foreground: "#F55385" } } }
   "sh": { icon: { style: { foreground: "#4D5A5E" } } }
   "sha1": { icon: { style: { foreground: "#8C86AF" } } }
@@ -365,12 +343,8 @@ extensions:
   "slnx": { icon: { style: { foreground: "#854CC7" } } }
   "slvs": { icon: { style: { foreground: "#839463" } } }
   "sml": { icon: { style: { foreground: "#E37933" } } }
-  "so": { icon: { style: { foreground: "#DCDDD6" } } }
   "sol": { icon: { style: { foreground: "#519ABA" } } }
   "spx": { icon: { style: { foreground: "#0075AA" } } }
-  "sql": { icon: { style: { foreground: "#DAD8D8" } } }
-  "sqlite": { icon: { style: { foreground: "#DAD8D8" } } }
-  "sqlite3": { icon: { style: { foreground: "#DAD8D8" } } }
   "srt": { icon: { style: { foreground: "#FFB713" } } }
   "ssa": { icon: { style: { foreground: "#FFB713" } } }
   "ste": { icon: { style: { foreground: "#839463" } } }
@@ -407,14 +381,12 @@ extensions:
   "tscn": { icon: { style: { foreground: "#6D8086" } } }
   "tsconfig": { icon: { style: { foreground: "#FF8700" } } }
   "tsx": { icon: { style: { foreground: "#1354BF" } } }
-  "ttf": { icon: { style: { foreground: "#ECECEC" } } }
   "twig": { icon: { style: { foreground: "#8DC149" } } }
   "txt": { icon: { style: { foreground: "#89E051" } } }
   "txz": { icon: { style: { foreground: "#ECA517" } } }
   "typ": { icon: { style: { foreground: "#0DBCC0" } } }
   "typoscript": { icon: { style: { foreground: "#FF8700" } } }
   "ui": { icon: { style: { foreground: "#015BF0" } } }
-  "unity": { icon: { style: { foreground: "#FDFDFD" } } }
   "v": { icon: { style: { foreground: "#019833" } } }
   "vala": { icon: { style: { foreground: "#7B3DB9" } } }
   "vert": { icon: { style: { foreground: "#5586A6" } } }
@@ -434,8 +406,6 @@ extensions:
   "webpack": { icon: { style: { foreground: "#519ABA" } } }
   "wma": { icon: { style: { foreground: "#00AFFF" } } }
   "wmv": { icon: { style: { foreground: "#FD971F" } } }
-  "woff": { icon: { style: { foreground: "#ECECEC" } } }
-  "woff2": { icon: { style: { foreground: "#ECECEC" } } }
   "wrl": { icon: { style: { foreground: "#888888" } } }
   "wrz": { icon: { style: { foreground: "#888888" } } }
   "wv": { icon: { style: { foreground: "#00AFFF" } } }
@@ -473,7 +443,6 @@ filenames:
   ".condarc": { icon: { style: { foreground: "#43B02A" } } }
   ".dockerignore": { icon: { style: { foreground: "#458EE6" } } }
   ".ds_store": { icon: { style: { foreground: "#41535B" } } }
-  ".editorconfig": { icon: { style: { foreground: "#FFF2F2" } } }
   ".env": { icon: { style: { foreground: "#FAF743" } } }
   ".eslintignore": { icon: { style: { foreground: "#4B32C3" } } }
   ".eslintrc": { icon: { style: { foreground: "#4B32C3" } } }
@@ -539,16 +508,10 @@ filenames:
   "Build.gradle": { icon: { style: { foreground: "#005F87" } } }
   "build.zig.zon": { icon: { style: { foreground: "#F69A1B" } } }
   "Build.zig.zon": { icon: { style: { foreground: "#F69A1B" } } }
-  "bun.lock": { icon: { style: { foreground: "#EADCD1" } } }
-  "Bun.lock": { icon: { style: { foreground: "#EADCD1" } } }
-  "bun.lockb": { icon: { style: { foreground: "#EADCD1" } } }
-  "Bun.lockb": { icon: { style: { foreground: "#EADCD1" } } }
   "cantorrc": { icon: { style: { foreground: "#1C99F3" } } }
   "Cantorrc": { icon: { style: { foreground: "#1C99F3" } } }
   "checkhealth": { icon: { style: { foreground: "#75B4FB" } } }
   "Checkhealth": { icon: { style: { foreground: "#75B4FB" } } }
-  "cmakelists.txt": { icon: { style: { foreground: "#DCE3EB" } } }
-  "Cmakelists.txt": { icon: { style: { foreground: "#DCE3EB" } } }
   "code_of_conduct": { icon: { style: { foreground: "#E41662" } } }
   "Code_of_conduct": { icon: { style: { foreground: "#E41662" } } }
   "code_of_conduct.md": { icon: { style: { foreground: "#E41662" } } }
@@ -639,10 +602,6 @@ filenames:
   "I18n.config.js": { icon: { style: { foreground: "#7986CB" } } }
   "i18n.config.ts": { icon: { style: { foreground: "#7986CB" } } }
   "I18n.config.ts": { icon: { style: { foreground: "#7986CB" } } }
-  "i3blocks.conf": { icon: { style: { foreground: "#E8EBEE" } } }
-  "I3blocks.conf": { icon: { style: { foreground: "#E8EBEE" } } }
-  "i3status.conf": { icon: { style: { foreground: "#E8EBEE" } } }
-  "I3status.conf": { icon: { style: { foreground: "#E8EBEE" } } }
   "index.theme": { icon: { style: { foreground: "#2DB96F" } } }
   "Index.theme": { icon: { style: { foreground: "#2DB96F" } } }
   "ionic.config.json": { icon: { style: { foreground: "#4F8FF7" } } }
@@ -727,18 +686,10 @@ filenames:
   "Py.typed": { icon: { style: { foreground: "#FFBC03" } } }
   "rakefile": { icon: { style: { foreground: "#701516" } } }
   "Rakefile": { icon: { style: { foreground: "#701516" } } }
-  "readme": { icon: { style: { foreground: "#EDEDED" } } }
-  "Readme": { icon: { style: { foreground: "#EDEDED" } } }
-  "readme.md": { icon: { style: { foreground: "#EDEDED" } } }
-  "Readme.md": { icon: { style: { foreground: "#EDEDED" } } }
   "rmd": { icon: { style: { foreground: "#519ABA" } } }
   "Rmd": { icon: { style: { foreground: "#519ABA" } } }
   "robots.txt": { icon: { style: { foreground: "#5D7096" } } }
   "Robots.txt": { icon: { style: { foreground: "#5D7096" } } }
-  "security": { icon: { style: { foreground: "#BEC4C9" } } }
-  "Security": { icon: { style: { foreground: "#BEC4C9" } } }
-  "security.md": { icon: { style: { foreground: "#BEC4C9" } } }
-  "Security.md": { icon: { style: { foreground: "#BEC4C9" } } }
   "settings.gradle": { icon: { style: { foreground: "#005F87" } } }
   "Settings.gradle": { icon: { style: { foreground: "#005F87" } } }
   "svelte.config.js": { icon: { style: { foreground: "#FF3E00" } } }
