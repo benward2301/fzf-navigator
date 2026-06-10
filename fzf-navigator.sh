@@ -444,8 +444,8 @@ __fzf_navigator_info() {
   fi
 
   local parts=()
-  [[ -n "$not_shown_text" ]] && parts+=("$not_shown_text")
   [[ -n "$indicators" ]] && parts+=("$indicators")
+  [[ -n "$not_shown_text" ]] && parts+=("$not_shown_text")
   [[ -n "$initial_ref" ]] && parts+=("$initial_ref")
 
   if [[ ${#parts[@]} -gt 0 ]]; then
