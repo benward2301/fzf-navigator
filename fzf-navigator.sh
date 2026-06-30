@@ -1138,6 +1138,9 @@ __fzf_navigator() {
     while IFS= read -r line; do
       local filename=$(__fzf_navigator_extract_filename "$line")
       local rel_path=$(__fzf_navigator_relpath "$dir/$filename" "$PWD")
+      if [[ "$rel_path" != */* && -f "$dir/$filename" && -x "$dir/$filename" ]]; then
+        rel_path="./$rel_path"
+      fi
       paths+=("$(printf '%q' "$rel_path")")
     done <<< "$selections"
     local all_paths="${paths[*]}"
