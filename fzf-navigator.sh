@@ -373,6 +373,7 @@ __fzf_navigator_footer() {
       "toggle_locked"
       "toggle_file_details"
       "toggle_recent_first"
+      "reload"
       "toggle_help"
     )
 
@@ -775,9 +776,10 @@ toggle_hidden_files:alt-h
 toggle_ignored_files:alt-i
 toggle_file_details:ctrl-g
 toggle_recent_first:ctrl-r
+reload:alt-r
 toggle_help:?"
 
-  local valid_actions="open open_and_exit exit insert_selection copy_selection cancel go_to_parent go_back go_forward go_to_session_start go_home go_to_root toggle_locked toggle_hidden_files toggle_ignored_files toggle_file_details toggle_recent_first toggle_help"
+  local valid_actions="open open_and_exit exit insert_selection copy_selection cancel go_to_parent go_back go_forward go_to_session_start go_home go_to_root toggle_locked toggle_hidden_files toggle_ignored_files toggle_file_details toggle_recent_first reload toggle_help"
 
   if [[ -n "${FZF_NAVIGATOR_BINDINGS:-}" ]]; then
     # Collect actions that have user-specified bindings
@@ -1013,6 +1015,9 @@ __fzf_navigator() {
         ;;
       toggle_recent_first)
         bind_str="${key}:transform(bash -c 'source \"\$FZF_NAVIGATOR_DIR/fzf-navigator.sh\"; __fzf_navigator_transform_toggle_recent_first')"
+        ;;
+      reload)
+        bind_str="${key}:reload-sync(bash -c 'source \"\$FZF_NAVIGATOR_DIR/fzf-navigator.sh\"; __fzf_navigator_reload')+refresh-preview"
         ;;
       cancel)
         bind_str="${key}:transform(bash -c 'source \"\$FZF_NAVIGATOR_DIR/fzf-navigator.sh\"; __fzf_navigator_transform_cancel')"

@@ -46,6 +46,7 @@ Press `ctrl-space` to open the navigator.
 | `alt-i` | `toggle_ignored_files` | Toggle git-ignored files (`eza` only) |
 | `ctrl-g` | `toggle_file_details` | Toggle file details (`-l`) |
 | `ctrl-r` | `toggle_recent_first` | Toggle recent-first sort |
+| `alt-r` | `reload` | Reload the current directory listing |
 | `?` | `toggle_help` | Toggle help |
 
 ## Configuration
